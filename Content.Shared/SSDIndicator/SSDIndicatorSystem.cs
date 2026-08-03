@@ -1,3 +1,6 @@
+// <Trauma>
+using Content.Shared.NPC;
+// </Trauma>
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CCVar;
 using Content.Shared.StatusEffectNew;
@@ -62,7 +65,7 @@ public sealed partial class SSDIndicatorSystem : EntitySystem
     // Prevents mapped mobs to go to sleep immediately
     private void OnMapInit(EntityUid uid, SSDIndicatorComponent component, MapInitEvent args)
     {
-        if (!_icSsdSleep || !component.IsSSD)
+        if (!_icSsdSleep || !component.IsSSD || HasComp<ActiveNPCComponent>(uid)) // Trauma
             return;
 
         component.FallAsleepTime = _timing.CurTime + TimeSpan.FromSeconds(_icSsdSleepTime);
@@ -86,7 +89,8 @@ public sealed partial class SSDIndicatorSystem : EntitySystem
             if (!ssd.IsSSD
                 || ssd.NextUpdate > curTime
                 || ssd.FallAsleepTime > curTime
-                || TerminatingOrDeleted(uid))
+                || TerminatingOrDeleted(uid)
+                || HasComp<ActiveNPCComponent>(uid)) // Trauma
                 continue;
 
             _statusEffects.TryUpdateStatusEffectDuration(uid, StatusEffectSSDSleeping);

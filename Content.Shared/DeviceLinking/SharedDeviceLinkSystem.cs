@@ -38,7 +38,7 @@ public abstract partial class SharedDeviceLinkSystem : EntitySystem
     {
         List<EntityUid> invalidSinks = new();
         List<(string, string)> invalidLinks = new();
-        foreach (var (sink, links)  in source.Comp.LinkedPorts)
+        foreach (var (sink, links) in source.Comp.LinkedPorts)
         {
             if (!TryComp(sink, out DeviceLinkSinkComponent? sinkComponent))
             {
@@ -415,8 +415,10 @@ public abstract partial class SharedDeviceLinkSystem : EntitySystem
         {
             foreach (var (sourcePort, sinkPort) in ports)
             {
-                RaiseLocalEvent(sourceUid, new PortDisconnectedEvent(sourcePort));
-                RaiseLocalEvent(sinkUid, new PortDisconnectedEvent(sinkPort));
+                // <Trauma>
+                RaiseLocalEvent(sourceUid, new PortDisconnectedEvent(sourcePort, sinkUid));
+                RaiseLocalEvent(sinkUid, new PortDisconnectedEvent(sinkPort, sourceUid));
+                // </Trauma>
             }
         }
 

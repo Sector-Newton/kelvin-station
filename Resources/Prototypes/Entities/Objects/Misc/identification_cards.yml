@@ -44,6 +44,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: BitrunningPoints # Orion
 
 #IDs with layers
 
