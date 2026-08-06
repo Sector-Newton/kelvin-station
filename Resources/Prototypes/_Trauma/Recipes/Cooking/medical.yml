@@ -1,6 +1,18 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: microwaveMealRecipe
+  id: Bloodpack
+  name: blood pack
+  result: Bloodpack1
+  time: 5
+  group: Medicinal
+  solids:
+    BloodpackEmpty: 1
+  reagents:
+    Artiplates: 4 #As described in the empty bloodpack's item description
+    DexalinPlus: 2
+    Iron: 4
+- type: microwaveMealRecipe
   id: BoneGelMakeshift
   name: makeshift bone gel
   result: BoneGelMakeshift

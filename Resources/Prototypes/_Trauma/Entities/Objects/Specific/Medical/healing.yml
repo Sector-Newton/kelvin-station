@@ -1,5 +1,37 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+- type: entity
+  name: empty blood pack
+  description: Can be filled with NanoTrasen's signature mix of artiplates, dexalin plus, and iron, then microwaved, to make a universal blood replacement.
+  parent: BaseHealingItem
+  id: BloodpackEmpty
+  components:
+  - type: Item
+    heldPrefix: emptybloodpack
+  - type: Tag
+    tags:
+    - Bloodpack
+  - type: Sprite
+    state: bloodpack-empty
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Bloodloss: 0 #What are you replenishing? it's empty!
+  - type: Stack
+    stackType: BloodpackEmptyStack #BloodpackEmpty is taken by the engine
+    count: 15
+
+- type: entity
+  parent: BloodpackEmpty
+  id: BloodpackEmpty1
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: BloodpackEmptyStack
+    count: 1
+
 # keep entry weight in RandomSafePillTable synced with number of items here
 - type: entityTable
   id: RandomSafePillTrauma

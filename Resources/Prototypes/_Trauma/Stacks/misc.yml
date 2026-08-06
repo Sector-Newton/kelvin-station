@@ -2,6 +2,14 @@
 
 - type: stack
   parent: BaseTinyStack
+  id: BloodpackEmptyStack #BloodpackEmpty is taken by the engine
+  name: stack-bloodpack-empty
+  icon: { sprite: /Textures/Objects/Specific/Medical/medical.rsi, state: bloodpack-empty }
+  spawn: BloodpackEmpty
+  maxCount: 15
+
+- type: stack
+  parent: BaseTinyStack
   id: OverrideKeyComponents
   name: stack-override-key-components
   icon: { sprite: /Textures/_Trauma/Objects/Tools/overridecomponents.rsi, state: icon }
